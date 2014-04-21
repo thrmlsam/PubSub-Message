@@ -1,0 +1,14 @@
+/*
+ * protoc  --proto_path=src/main/java/com/pubsub/message/ --java_out=src/main/java/com/pubsub/message/ src/main/java/com/pubsub/message/NetworkMessage.proto
+ *
+ */
+package com.pubsub.message;
+
+option java_package = "com.pubsub.message";
+option java_outer_classname = "NetworkMessage";
+
+message Messages {
+
+        required string title = 1;
+        required string message = 2;
+}
