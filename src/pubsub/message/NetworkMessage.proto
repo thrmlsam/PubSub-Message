@@ -1,0 +1,34 @@
+/*
+ * protoc  --proto_path=src/pubsub/message/ --java_out=src/pubsub/message/ src/pubsub/message/NetworkMessage.proto
+ *
+ */
+package pubsub.message;
+
+option java_package = "pubsub.message";
+option java_outer_classname = "NetworkMessage";
+
+message Messages {
+
+        enum MessageType{
+                
+                ADD_PUBLISHER = 0;
+                ADD_SUBSCRIBER = 1;
+                NEW_POST = 2;
+        }
+
+        message Publisher{
+            
+                optional string hostAddress = 1;
+        }
+
+        message Subscriber{
+
+                optional string hostAddress = 1;
+                optional string email = 2;
+        }
+
+        optional string title = 1;
+        optional string message = 2;
+        optional Publisher publisher = 3;
+        optional Subscriber subscriber = 4;
+}
