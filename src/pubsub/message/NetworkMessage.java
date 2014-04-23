@@ -68,6 +68,16 @@ public final class NetworkMessage {
      * <code>optional .pubsub.message.Messages.Subscriber subscriber = 4;</code>
      */
     pubsub.message.NetworkMessage.Messages.SubscriberOrBuilder getSubscriberOrBuilder();
+
+    // required .pubsub.message.Messages.MessageType messageType = 5;
+    /**
+     * <code>required .pubsub.message.Messages.MessageType messageType = 5;</code>
+     */
+    boolean hasMessageType();
+    /**
+     * <code>required .pubsub.message.Messages.MessageType messageType = 5;</code>
+     */
+    pubsub.message.NetworkMessage.Messages.MessageType getMessageType();
   }
   /**
    * Protobuf type {@code pubsub.message.Messages}
@@ -154,6 +164,17 @@ public final class NetworkMessage {
                 subscriber_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000008;
+              break;
+            }
+            case 40: {
+              int rawValue = input.readEnum();
+              pubsub.message.NetworkMessage.Messages.MessageType value = pubsub.message.NetworkMessage.Messages.MessageType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(5, rawValue);
+              } else {
+                bitField0_ |= 0x00000010;
+                messageType_ = value;
+              }
               break;
             }
           }
@@ -1515,17 +1536,38 @@ public final class NetworkMessage {
       return subscriber_;
     }
 
+    // required .pubsub.message.Messages.MessageType messageType = 5;
+    public static final int MESSAGETYPE_FIELD_NUMBER = 5;
+    private pubsub.message.NetworkMessage.Messages.MessageType messageType_;
+    /**
+     * <code>required .pubsub.message.Messages.MessageType messageType = 5;</code>
+     */
+    public boolean hasMessageType() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required .pubsub.message.Messages.MessageType messageType = 5;</code>
+     */
+    public pubsub.message.NetworkMessage.Messages.MessageType getMessageType() {
+      return messageType_;
+    }
+
     private void initFields() {
       title_ = "";
       message_ = "";
       publisher_ = pubsub.message.NetworkMessage.Messages.Publisher.getDefaultInstance();
       subscriber_ = pubsub.message.NetworkMessage.Messages.Subscriber.getDefaultInstance();
+      messageType_ = pubsub.message.NetworkMessage.Messages.MessageType.ADD_PUBLISHER;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasMessageType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -1544,6 +1586,9 @@ public final class NetworkMessage {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(4, subscriber_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeEnum(5, messageType_.getNumber());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1569,6 +1614,10 @@ public final class NetworkMessage {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, subscriber_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, messageType_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1704,6 +1753,8 @@ public final class NetworkMessage {
           subscriberBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000008);
+        messageType_ = pubsub.message.NetworkMessage.Messages.MessageType.ADD_PUBLISHER;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -1756,6 +1807,10 @@ public final class NetworkMessage {
         } else {
           result.subscriber_ = subscriberBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.messageType_ = messageType_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1788,11 +1843,18 @@ public final class NetworkMessage {
         if (other.hasSubscriber()) {
           mergeSubscriber(other.getSubscriber());
         }
+        if (other.hasMessageType()) {
+          setMessageType(other.getMessageType());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasMessageType()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -2197,6 +2259,42 @@ public final class NetworkMessage {
         return subscriberBuilder_;
       }
 
+      // required .pubsub.message.Messages.MessageType messageType = 5;
+      private pubsub.message.NetworkMessage.Messages.MessageType messageType_ = pubsub.message.NetworkMessage.Messages.MessageType.ADD_PUBLISHER;
+      /**
+       * <code>required .pubsub.message.Messages.MessageType messageType = 5;</code>
+       */
+      public boolean hasMessageType() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required .pubsub.message.Messages.MessageType messageType = 5;</code>
+       */
+      public pubsub.message.NetworkMessage.Messages.MessageType getMessageType() {
+        return messageType_;
+      }
+      /**
+       * <code>required .pubsub.message.Messages.MessageType messageType = 5;</code>
+       */
+      public Builder setMessageType(pubsub.message.NetworkMessage.Messages.MessageType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000010;
+        messageType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .pubsub.message.Messages.MessageType messageType = 5;</code>
+       */
+      public Builder clearMessageType() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        messageType_ = pubsub.message.NetworkMessage.Messages.MessageType.ADD_PUBLISHER;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:pubsub.message.Messages)
     }
 
@@ -2232,16 +2330,17 @@ public final class NetworkMessage {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024NetworkMessage.proto\022\016pubsub.message\"\262" +
+      "\n\024NetworkMessage.proto\022\016pubsub.message\"\355" +
       "\002\n\010Messages\022\r\n\005title\030\001 \001(\t\022\017\n\007message\030\002 " +
       "\001(\t\0225\n\tpublisher\030\003 \001(\0132\".pubsub.message." +
       "Messages.Publisher\0227\n\nsubscriber\030\004 \001(\0132#" +
-      ".pubsub.message.Messages.Subscriber\032 \n\tP" +
-      "ublisher\022\023\n\013hostAddress\030\001 \001(\t\0320\n\nSubscri" +
-      "ber\022\023\n\013hostAddress\030\001 \001(\t\022\r\n\005email\030\002 \001(\t\"" +
-      "B\n\013MessageType\022\021\n\rADD_PUBLISHER\020\000\022\022\n\016ADD" +
-      "_SUBSCRIBER\020\001\022\014\n\010NEW_POST\020\002B \n\016pubsub.me" +
-      "ssageB\016NetworkMessage"
+      ".pubsub.message.Messages.Subscriber\0229\n\013m" +
+      "essageType\030\005 \002(\0162$.pubsub.message.Messag" +
+      "es.MessageType\032 \n\tPublisher\022\023\n\013hostAddre" +
+      "ss\030\001 \001(\t\0320\n\nSubscriber\022\023\n\013hostAddress\030\001 " +
+      "\001(\t\022\r\n\005email\030\002 \001(\t\"B\n\013MessageType\022\021\n\rADD" +
+      "_PUBLISHER\020\000\022\022\n\016ADD_SUBSCRIBER\020\001\022\014\n\010NEW_",
+      "POST\020\002B \n\016pubsub.messageB\016NetworkMessage"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2253,7 +2352,7 @@ public final class NetworkMessage {
           internal_static_pubsub_message_Messages_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pubsub_message_Messages_descriptor,
-              new java.lang.String[] { "Title", "Message", "Publisher", "Subscriber", });
+              new java.lang.String[] { "Title", "Message", "Publisher", "Subscriber", "MessageType", });
           internal_static_pubsub_message_Messages_Publisher_descriptor =
             internal_static_pubsub_message_Messages_descriptor.getNestedTypes().get(0);
           internal_static_pubsub_message_Messages_Publisher_fieldAccessorTable = new

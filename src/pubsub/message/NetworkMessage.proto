@@ -31,4 +31,5 @@ message Messages {
         optional string message = 2;
         optional Publisher publisher = 3;
         optional Subscriber subscriber = 4;
+        required MessageType messageType = 5;
 }
