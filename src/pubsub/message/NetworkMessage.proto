@@ -18,13 +18,17 @@ message Messages {
 
         message Publisher{
             
-                optional string hostAddress = 1;
+                required string email = 1;
+                optional string name =2;
+                optional string hostAddress = 3;
         }
 
         message Subscriber{
 
-                optional string hostAddress = 1;
-                optional string email = 2;
+                required string email = 1;
+                optional string name = 2;
+                optional string hostAddress = 3;
+
         }
 
         optional string title = 1;

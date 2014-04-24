@@ -310,17 +310,47 @@ public final class NetworkMessage {
     public interface PublisherOrBuilder
         extends com.google.protobuf.MessageOrBuilder {
 
-      // optional string hostAddress = 1;
+      // required string email = 1;
       /**
-       * <code>optional string hostAddress = 1;</code>
+       * <code>required string email = 1;</code>
+       */
+      boolean hasEmail();
+      /**
+       * <code>required string email = 1;</code>
+       */
+      java.lang.String getEmail();
+      /**
+       * <code>required string email = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getEmailBytes();
+
+      // optional string name = 2;
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      boolean hasName();
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      java.lang.String getName();
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getNameBytes();
+
+      // optional string hostAddress = 3;
+      /**
+       * <code>optional string hostAddress = 3;</code>
        */
       boolean hasHostAddress();
       /**
-       * <code>optional string hostAddress = 1;</code>
+       * <code>optional string hostAddress = 3;</code>
        */
       java.lang.String getHostAddress();
       /**
-       * <code>optional string hostAddress = 1;</code>
+       * <code>optional string hostAddress = 3;</code>
        */
       com.google.protobuf.ByteString
           getHostAddressBytes();
@@ -378,6 +408,16 @@ public final class NetworkMessage {
               }
               case 10: {
                 bitField0_ |= 0x00000001;
+                email_ = input.readBytes();
+                break;
+              }
+              case 18: {
+                bitField0_ |= 0x00000002;
+                name_ = input.readBytes();
+                break;
+              }
+              case 26: {
+                bitField0_ |= 0x00000004;
                 hostAddress_ = input.readBytes();
                 break;
               }
@@ -421,17 +461,103 @@ public final class NetworkMessage {
       }
 
       private int bitField0_;
-      // optional string hostAddress = 1;
-      public static final int HOSTADDRESS_FIELD_NUMBER = 1;
-      private java.lang.Object hostAddress_;
+      // required string email = 1;
+      public static final int EMAIL_FIELD_NUMBER = 1;
+      private java.lang.Object email_;
       /**
-       * <code>optional string hostAddress = 1;</code>
+       * <code>required string email = 1;</code>
        */
-      public boolean hasHostAddress() {
+      public boolean hasEmail() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional string hostAddress = 1;</code>
+       * <code>required string email = 1;</code>
+       */
+      public java.lang.String getEmail() {
+        java.lang.Object ref = email_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            email_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>required string email = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getEmailBytes() {
+        java.lang.Object ref = email_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          email_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      // optional string name = 2;
+      public static final int NAME_FIELD_NUMBER = 2;
+      private java.lang.Object name_;
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      // optional string hostAddress = 3;
+      public static final int HOSTADDRESS_FIELD_NUMBER = 3;
+      private java.lang.Object hostAddress_;
+      /**
+       * <code>optional string hostAddress = 3;</code>
+       */
+      public boolean hasHostAddress() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string hostAddress = 3;</code>
        */
       public java.lang.String getHostAddress() {
         java.lang.Object ref = hostAddress_;
@@ -448,7 +574,7 @@ public final class NetworkMessage {
         }
       }
       /**
-       * <code>optional string hostAddress = 1;</code>
+       * <code>optional string hostAddress = 3;</code>
        */
       public com.google.protobuf.ByteString
           getHostAddressBytes() {
@@ -465,6 +591,8 @@ public final class NetworkMessage {
       }
 
       private void initFields() {
+        email_ = "";
+        name_ = "";
         hostAddress_ = "";
       }
       private byte memoizedIsInitialized = -1;
@@ -472,6 +600,10 @@ public final class NetworkMessage {
         byte isInitialized = memoizedIsInitialized;
         if (isInitialized != -1) return isInitialized == 1;
 
+        if (!hasEmail()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
         memoizedIsInitialized = 1;
         return true;
       }
@@ -480,7 +612,13 @@ public final class NetworkMessage {
                           throws java.io.IOException {
         getSerializedSize();
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeBytes(1, getHostAddressBytes());
+          output.writeBytes(1, getEmailBytes());
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          output.writeBytes(2, getNameBytes());
+        }
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          output.writeBytes(3, getHostAddressBytes());
         }
         getUnknownFields().writeTo(output);
       }
@@ -493,7 +631,15 @@ public final class NetworkMessage {
         size = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, getHostAddressBytes());
+            .computeBytesSize(1, getEmailBytes());
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBytesSize(2, getNameBytes());
+        }
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBytesSize(3, getHostAddressBytes());
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSerializedSize = size;
@@ -611,8 +757,12 @@ public final class NetworkMessage {
 
         public Builder clear() {
           super.clear();
-          hostAddress_ = "";
+          email_ = "";
           bitField0_ = (bitField0_ & ~0x00000001);
+          name_ = "";
+          bitField0_ = (bitField0_ & ~0x00000002);
+          hostAddress_ = "";
+          bitField0_ = (bitField0_ & ~0x00000004);
           return this;
         }
 
@@ -644,6 +794,14 @@ public final class NetworkMessage {
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
             to_bitField0_ |= 0x00000001;
           }
+          result.email_ = email_;
+          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          result.name_ = name_;
+          if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+            to_bitField0_ |= 0x00000004;
+          }
           result.hostAddress_ = hostAddress_;
           result.bitField0_ = to_bitField0_;
           onBuilt();
@@ -661,8 +819,18 @@ public final class NetworkMessage {
 
         public Builder mergeFrom(pubsub.message.NetworkMessage.Messages.Publisher other) {
           if (other == pubsub.message.NetworkMessage.Messages.Publisher.getDefaultInstance()) return this;
-          if (other.hasHostAddress()) {
+          if (other.hasEmail()) {
             bitField0_ |= 0x00000001;
+            email_ = other.email_;
+            onChanged();
+          }
+          if (other.hasName()) {
+            bitField0_ |= 0x00000002;
+            name_ = other.name_;
+            onChanged();
+          }
+          if (other.hasHostAddress()) {
+            bitField0_ |= 0x00000004;
             hostAddress_ = other.hostAddress_;
             onChanged();
           }
@@ -671,6 +839,10 @@ public final class NetworkMessage {
         }
 
         public final boolean isInitialized() {
+          if (!hasEmail()) {
+            
+            return false;
+          }
           return true;
         }
 
@@ -693,16 +865,164 @@ public final class NetworkMessage {
         }
         private int bitField0_;
 
-        // optional string hostAddress = 1;
-        private java.lang.Object hostAddress_ = "";
+        // required string email = 1;
+        private java.lang.Object email_ = "";
         /**
-         * <code>optional string hostAddress = 1;</code>
+         * <code>required string email = 1;</code>
          */
-        public boolean hasHostAddress() {
+        public boolean hasEmail() {
           return ((bitField0_ & 0x00000001) == 0x00000001);
         }
         /**
-         * <code>optional string hostAddress = 1;</code>
+         * <code>required string email = 1;</code>
+         */
+        public java.lang.String getEmail() {
+          java.lang.Object ref = email_;
+          if (!(ref instanceof java.lang.String)) {
+            java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                .toStringUtf8();
+            email_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>required string email = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getEmailBytes() {
+          java.lang.Object ref = email_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            email_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>required string email = 1;</code>
+         */
+        public Builder setEmail(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+          email_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required string email = 1;</code>
+         */
+        public Builder clearEmail() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          email_ = getDefaultInstance().getEmail();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required string email = 1;</code>
+         */
+        public Builder setEmailBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+          email_ = value;
+          onChanged();
+          return this;
+        }
+
+        // optional string name = 2;
+        private java.lang.Object name_ = "";
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public boolean hasName() {
+          return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public java.lang.String getName() {
+          java.lang.Object ref = name_;
+          if (!(ref instanceof java.lang.String)) {
+            java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                .toStringUtf8();
+            name_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getNameBytes() {
+          java.lang.Object ref = name_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            name_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public Builder setName(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+          name_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public Builder clearName() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          name_ = getDefaultInstance().getName();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public Builder setNameBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+          name_ = value;
+          onChanged();
+          return this;
+        }
+
+        // optional string hostAddress = 3;
+        private java.lang.Object hostAddress_ = "";
+        /**
+         * <code>optional string hostAddress = 3;</code>
+         */
+        public boolean hasHostAddress() {
+          return ((bitField0_ & 0x00000004) == 0x00000004);
+        }
+        /**
+         * <code>optional string hostAddress = 3;</code>
          */
         public java.lang.String getHostAddress() {
           java.lang.Object ref = hostAddress_;
@@ -716,7 +1036,7 @@ public final class NetworkMessage {
           }
         }
         /**
-         * <code>optional string hostAddress = 1;</code>
+         * <code>optional string hostAddress = 3;</code>
          */
         public com.google.protobuf.ByteString
             getHostAddressBytes() {
@@ -732,36 +1052,36 @@ public final class NetworkMessage {
           }
         }
         /**
-         * <code>optional string hostAddress = 1;</code>
+         * <code>optional string hostAddress = 3;</code>
          */
         public Builder setHostAddress(
             java.lang.String value) {
           if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  bitField0_ |= 0x00000004;
           hostAddress_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>optional string hostAddress = 1;</code>
+         * <code>optional string hostAddress = 3;</code>
          */
         public Builder clearHostAddress() {
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000004);
           hostAddress_ = getDefaultInstance().getHostAddress();
           onChanged();
           return this;
         }
         /**
-         * <code>optional string hostAddress = 1;</code>
+         * <code>optional string hostAddress = 3;</code>
          */
         public Builder setHostAddressBytes(
             com.google.protobuf.ByteString value) {
           if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  bitField0_ |= 0x00000004;
           hostAddress_ = value;
           onChanged();
           return this;
@@ -781,35 +1101,50 @@ public final class NetworkMessage {
     public interface SubscriberOrBuilder
         extends com.google.protobuf.MessageOrBuilder {
 
-      // optional string hostAddress = 1;
+      // required string email = 1;
       /**
-       * <code>optional string hostAddress = 1;</code>
-       */
-      boolean hasHostAddress();
-      /**
-       * <code>optional string hostAddress = 1;</code>
-       */
-      java.lang.String getHostAddress();
-      /**
-       * <code>optional string hostAddress = 1;</code>
-       */
-      com.google.protobuf.ByteString
-          getHostAddressBytes();
-
-      // optional string email = 2;
-      /**
-       * <code>optional string email = 2;</code>
+       * <code>required string email = 1;</code>
        */
       boolean hasEmail();
       /**
-       * <code>optional string email = 2;</code>
+       * <code>required string email = 1;</code>
        */
       java.lang.String getEmail();
       /**
-       * <code>optional string email = 2;</code>
+       * <code>required string email = 1;</code>
        */
       com.google.protobuf.ByteString
           getEmailBytes();
+
+      // optional string name = 2;
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      boolean hasName();
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      java.lang.String getName();
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getNameBytes();
+
+      // optional string hostAddress = 3;
+      /**
+       * <code>optional string hostAddress = 3;</code>
+       */
+      boolean hasHostAddress();
+      /**
+       * <code>optional string hostAddress = 3;</code>
+       */
+      java.lang.String getHostAddress();
+      /**
+       * <code>optional string hostAddress = 3;</code>
+       */
+      com.google.protobuf.ByteString
+          getHostAddressBytes();
     }
     /**
      * Protobuf type {@code pubsub.message.Messages.Subscriber}
@@ -864,12 +1199,17 @@ public final class NetworkMessage {
               }
               case 10: {
                 bitField0_ |= 0x00000001;
-                hostAddress_ = input.readBytes();
+                email_ = input.readBytes();
                 break;
               }
               case 18: {
                 bitField0_ |= 0x00000002;
-                email_ = input.readBytes();
+                name_ = input.readBytes();
+                break;
+              }
+              case 26: {
+                bitField0_ |= 0x00000004;
+                hostAddress_ = input.readBytes();
                 break;
               }
             }
@@ -912,60 +1252,17 @@ public final class NetworkMessage {
       }
 
       private int bitField0_;
-      // optional string hostAddress = 1;
-      public static final int HOSTADDRESS_FIELD_NUMBER = 1;
-      private java.lang.Object hostAddress_;
+      // required string email = 1;
+      public static final int EMAIL_FIELD_NUMBER = 1;
+      private java.lang.Object email_;
       /**
-       * <code>optional string hostAddress = 1;</code>
+       * <code>required string email = 1;</code>
        */
-      public boolean hasHostAddress() {
+      public boolean hasEmail() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional string hostAddress = 1;</code>
-       */
-      public java.lang.String getHostAddress() {
-        java.lang.Object ref = hostAddress_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            hostAddress_ = s;
-          }
-          return s;
-        }
-      }
-      /**
-       * <code>optional string hostAddress = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getHostAddressBytes() {
-        java.lang.Object ref = hostAddress_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          hostAddress_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-
-      // optional string email = 2;
-      public static final int EMAIL_FIELD_NUMBER = 2;
-      private java.lang.Object email_;
-      /**
-       * <code>optional string email = 2;</code>
-       */
-      public boolean hasEmail() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional string email = 2;</code>
+       * <code>required string email = 1;</code>
        */
       public java.lang.String getEmail() {
         java.lang.Object ref = email_;
@@ -982,7 +1279,7 @@ public final class NetworkMessage {
         }
       }
       /**
-       * <code>optional string email = 2;</code>
+       * <code>required string email = 1;</code>
        */
       public com.google.protobuf.ByteString
           getEmailBytes() {
@@ -998,15 +1295,106 @@ public final class NetworkMessage {
         }
       }
 
+      // optional string name = 2;
+      public static final int NAME_FIELD_NUMBER = 2;
+      private java.lang.Object name_;
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      // optional string hostAddress = 3;
+      public static final int HOSTADDRESS_FIELD_NUMBER = 3;
+      private java.lang.Object hostAddress_;
+      /**
+       * <code>optional string hostAddress = 3;</code>
+       */
+      public boolean hasHostAddress() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string hostAddress = 3;</code>
+       */
+      public java.lang.String getHostAddress() {
+        java.lang.Object ref = hostAddress_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            hostAddress_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>optional string hostAddress = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getHostAddressBytes() {
+        java.lang.Object ref = hostAddress_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          hostAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
       private void initFields() {
-        hostAddress_ = "";
         email_ = "";
+        name_ = "";
+        hostAddress_ = "";
       }
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
         if (isInitialized != -1) return isInitialized == 1;
 
+        if (!hasEmail()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
         memoizedIsInitialized = 1;
         return true;
       }
@@ -1015,10 +1403,13 @@ public final class NetworkMessage {
                           throws java.io.IOException {
         getSerializedSize();
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeBytes(1, getHostAddressBytes());
+          output.writeBytes(1, getEmailBytes());
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeBytes(2, getEmailBytes());
+          output.writeBytes(2, getNameBytes());
+        }
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          output.writeBytes(3, getHostAddressBytes());
         }
         getUnknownFields().writeTo(output);
       }
@@ -1031,11 +1422,15 @@ public final class NetworkMessage {
         size = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, getHostAddressBytes());
+            .computeBytesSize(1, getEmailBytes());
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(2, getEmailBytes());
+            .computeBytesSize(2, getNameBytes());
+        }
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBytesSize(3, getHostAddressBytes());
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSerializedSize = size;
@@ -1153,10 +1548,12 @@ public final class NetworkMessage {
 
         public Builder clear() {
           super.clear();
-          hostAddress_ = "";
-          bitField0_ = (bitField0_ & ~0x00000001);
           email_ = "";
+          bitField0_ = (bitField0_ & ~0x00000001);
+          name_ = "";
           bitField0_ = (bitField0_ & ~0x00000002);
+          hostAddress_ = "";
+          bitField0_ = (bitField0_ & ~0x00000004);
           return this;
         }
 
@@ -1188,11 +1585,15 @@ public final class NetworkMessage {
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
             to_bitField0_ |= 0x00000001;
           }
-          result.hostAddress_ = hostAddress_;
+          result.email_ = email_;
           if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
             to_bitField0_ |= 0x00000002;
           }
-          result.email_ = email_;
+          result.name_ = name_;
+          if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+            to_bitField0_ |= 0x00000004;
+          }
+          result.hostAddress_ = hostAddress_;
           result.bitField0_ = to_bitField0_;
           onBuilt();
           return result;
@@ -1209,14 +1610,19 @@ public final class NetworkMessage {
 
         public Builder mergeFrom(pubsub.message.NetworkMessage.Messages.Subscriber other) {
           if (other == pubsub.message.NetworkMessage.Messages.Subscriber.getDefaultInstance()) return this;
-          if (other.hasHostAddress()) {
+          if (other.hasEmail()) {
             bitField0_ |= 0x00000001;
-            hostAddress_ = other.hostAddress_;
+            email_ = other.email_;
             onChanged();
           }
-          if (other.hasEmail()) {
+          if (other.hasName()) {
             bitField0_ |= 0x00000002;
-            email_ = other.email_;
+            name_ = other.name_;
+            onChanged();
+          }
+          if (other.hasHostAddress()) {
+            bitField0_ |= 0x00000004;
+            hostAddress_ = other.hostAddress_;
             onChanged();
           }
           this.mergeUnknownFields(other.getUnknownFields());
@@ -1224,6 +1630,10 @@ public final class NetworkMessage {
         }
 
         public final boolean isInitialized() {
+          if (!hasEmail()) {
+            
+            return false;
+          }
           return true;
         }
 
@@ -1246,90 +1656,16 @@ public final class NetworkMessage {
         }
         private int bitField0_;
 
-        // optional string hostAddress = 1;
-        private java.lang.Object hostAddress_ = "";
+        // required string email = 1;
+        private java.lang.Object email_ = "";
         /**
-         * <code>optional string hostAddress = 1;</code>
+         * <code>required string email = 1;</code>
          */
-        public boolean hasHostAddress() {
+        public boolean hasEmail() {
           return ((bitField0_ & 0x00000001) == 0x00000001);
         }
         /**
-         * <code>optional string hostAddress = 1;</code>
-         */
-        public java.lang.String getHostAddress() {
-          java.lang.Object ref = hostAddress_;
-          if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            hostAddress_ = s;
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
-        }
-        /**
-         * <code>optional string hostAddress = 1;</code>
-         */
-        public com.google.protobuf.ByteString
-            getHostAddressBytes() {
-          java.lang.Object ref = hostAddress_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            hostAddress_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <code>optional string hostAddress = 1;</code>
-         */
-        public Builder setHostAddress(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-          hostAddress_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional string hostAddress = 1;</code>
-         */
-        public Builder clearHostAddress() {
-          bitField0_ = (bitField0_ & ~0x00000001);
-          hostAddress_ = getDefaultInstance().getHostAddress();
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional string hostAddress = 1;</code>
-         */
-        public Builder setHostAddressBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-          hostAddress_ = value;
-          onChanged();
-          return this;
-        }
-
-        // optional string email = 2;
-        private java.lang.Object email_ = "";
-        /**
-         * <code>optional string email = 2;</code>
-         */
-        public boolean hasEmail() {
-          return ((bitField0_ & 0x00000002) == 0x00000002);
-        }
-        /**
-         * <code>optional string email = 2;</code>
+         * <code>required string email = 1;</code>
          */
         public java.lang.String getEmail() {
           java.lang.Object ref = email_;
@@ -1343,7 +1679,7 @@ public final class NetworkMessage {
           }
         }
         /**
-         * <code>optional string email = 2;</code>
+         * <code>required string email = 1;</code>
          */
         public com.google.protobuf.ByteString
             getEmailBytes() {
@@ -1359,37 +1695,185 @@ public final class NetworkMessage {
           }
         }
         /**
-         * <code>optional string email = 2;</code>
+         * <code>required string email = 1;</code>
          */
         public Builder setEmail(
             java.lang.String value) {
           if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000001;
           email_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>optional string email = 2;</code>
+         * <code>required string email = 1;</code>
          */
         public Builder clearEmail() {
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
           email_ = getDefaultInstance().getEmail();
           onChanged();
           return this;
         }
         /**
-         * <code>optional string email = 2;</code>
+         * <code>required string email = 1;</code>
          */
         public Builder setEmailBytes(
             com.google.protobuf.ByteString value) {
           if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000001;
           email_ = value;
+          onChanged();
+          return this;
+        }
+
+        // optional string name = 2;
+        private java.lang.Object name_ = "";
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public boolean hasName() {
+          return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public java.lang.String getName() {
+          java.lang.Object ref = name_;
+          if (!(ref instanceof java.lang.String)) {
+            java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                .toStringUtf8();
+            name_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getNameBytes() {
+          java.lang.Object ref = name_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            name_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public Builder setName(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+          name_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public Builder clearName() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          name_ = getDefaultInstance().getName();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string name = 2;</code>
+         */
+        public Builder setNameBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+          name_ = value;
+          onChanged();
+          return this;
+        }
+
+        // optional string hostAddress = 3;
+        private java.lang.Object hostAddress_ = "";
+        /**
+         * <code>optional string hostAddress = 3;</code>
+         */
+        public boolean hasHostAddress() {
+          return ((bitField0_ & 0x00000004) == 0x00000004);
+        }
+        /**
+         * <code>optional string hostAddress = 3;</code>
+         */
+        public java.lang.String getHostAddress() {
+          java.lang.Object ref = hostAddress_;
+          if (!(ref instanceof java.lang.String)) {
+            java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                .toStringUtf8();
+            hostAddress_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>optional string hostAddress = 3;</code>
+         */
+        public com.google.protobuf.ByteString
+            getHostAddressBytes() {
+          java.lang.Object ref = hostAddress_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            hostAddress_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>optional string hostAddress = 3;</code>
+         */
+        public Builder setHostAddress(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+          hostAddress_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string hostAddress = 3;</code>
+         */
+        public Builder clearHostAddress() {
+          bitField0_ = (bitField0_ & ~0x00000004);
+          hostAddress_ = getDefaultInstance().getHostAddress();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string hostAddress = 3;</code>
+         */
+        public Builder setHostAddressBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+          hostAddress_ = value;
           onChanged();
           return this;
         }
@@ -1567,6 +2051,18 @@ public final class NetworkMessage {
       if (!hasMessageType()) {
         memoizedIsInitialized = 0;
         return false;
+      }
+      if (hasPublisher()) {
+        if (!getPublisher().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasSubscriber()) {
+        if (!getSubscriber().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -1854,6 +2350,18 @@ public final class NetworkMessage {
         if (!hasMessageType()) {
           
           return false;
+        }
+        if (hasPublisher()) {
+          if (!getPublisher().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasSubscriber()) {
+          if (!getSubscriber().isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -2330,17 +2838,19 @@ public final class NetworkMessage {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024NetworkMessage.proto\022\016pubsub.message\"\355" +
-      "\002\n\010Messages\022\r\n\005title\030\001 \001(\t\022\017\n\007message\030\002 " +
+      "\n\024NetworkMessage.proto\022\016pubsub.message\"\230" +
+      "\003\n\010Messages\022\r\n\005title\030\001 \001(\t\022\017\n\007message\030\002 " +
       "\001(\t\0225\n\tpublisher\030\003 \001(\0132\".pubsub.message." +
       "Messages.Publisher\0227\n\nsubscriber\030\004 \001(\0132#" +
       ".pubsub.message.Messages.Subscriber\0229\n\013m" +
       "essageType\030\005 \002(\0162$.pubsub.message.Messag" +
-      "es.MessageType\032 \n\tPublisher\022\023\n\013hostAddre" +
-      "ss\030\001 \001(\t\0320\n\nSubscriber\022\023\n\013hostAddress\030\001 " +
-      "\001(\t\022\r\n\005email\030\002 \001(\t\"B\n\013MessageType\022\021\n\rADD" +
-      "_PUBLISHER\020\000\022\022\n\016ADD_SUBSCRIBER\020\001\022\014\n\010NEW_",
-      "POST\020\002B \n\016pubsub.messageB\016NetworkMessage"
+      "es.MessageType\032=\n\tPublisher\022\r\n\005email\030\001 \002" +
+      "(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013hostAddress\030\003 \001(\t\032>\n" +
+      "\nSubscriber\022\r\n\005email\030\001 \002(\t\022\014\n\004name\030\002 \001(\t" +
+      "\022\023\n\013hostAddress\030\003 \001(\t\"B\n\013MessageType\022\021\n\r",
+      "ADD_PUBLISHER\020\000\022\022\n\016ADD_SUBSCRIBER\020\001\022\014\n\010N" +
+      "EW_POST\020\002B \n\016pubsub.messageB\016NetworkMess" +
+      "age"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2358,13 +2868,13 @@ public final class NetworkMessage {
           internal_static_pubsub_message_Messages_Publisher_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pubsub_message_Messages_Publisher_descriptor,
-              new java.lang.String[] { "HostAddress", });
+              new java.lang.String[] { "Email", "Name", "HostAddress", });
           internal_static_pubsub_message_Messages_Subscriber_descriptor =
             internal_static_pubsub_message_Messages_descriptor.getNestedTypes().get(1);
           internal_static_pubsub_message_Messages_Subscriber_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pubsub_message_Messages_Subscriber_descriptor,
-              new java.lang.String[] { "HostAddress", "Email", });
+              new java.lang.String[] { "Email", "Name", "HostAddress", });
           return null;
         }
       };
