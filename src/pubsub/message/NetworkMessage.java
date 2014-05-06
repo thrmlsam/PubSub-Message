@@ -78,6 +78,26 @@ public final class NetworkMessage {
      * <code>required .pubsub.message.Messages.MessageType messageType = 5;</code>
      */
     pubsub.message.NetworkMessage.Messages.MessageType getMessageType();
+
+    // repeated string topics = 6;
+    /**
+     * <code>repeated string topics = 6;</code>
+     */
+    java.util.List<java.lang.String>
+    getTopicsList();
+    /**
+     * <code>repeated string topics = 6;</code>
+     */
+    int getTopicsCount();
+    /**
+     * <code>repeated string topics = 6;</code>
+     */
+    java.lang.String getTopics(int index);
+    /**
+     * <code>repeated string topics = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getTopicsBytes(int index);
   }
   /**
    * Protobuf type {@code pubsub.message.Messages}
@@ -177,6 +197,14 @@ public final class NetworkMessage {
               }
               break;
             }
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                topics_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              topics_.add(input.readBytes());
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -185,6 +213,9 @@ public final class NetworkMessage {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+          topics_ = new com.google.protobuf.UnmodifiableLazyStringList(topics_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -233,6 +264,10 @@ public final class NetworkMessage {
        * <code>NEW_POST = 2;</code>
        */
       NEW_POST(2, 2),
+      /**
+       * <code>LOGIN = 3;</code>
+       */
+      LOGIN(3, 3),
       ;
 
       /**
@@ -247,6 +282,10 @@ public final class NetworkMessage {
        * <code>NEW_POST = 2;</code>
        */
       public static final int NEW_POST_VALUE = 2;
+      /**
+       * <code>LOGIN = 3;</code>
+       */
+      public static final int LOGIN_VALUE = 3;
 
 
       public final int getNumber() { return value; }
@@ -256,6 +295,7 @@ public final class NetworkMessage {
           case 0: return ADD_PUBLISHER;
           case 1: return ADD_SUBSCRIBER;
           case 2: return NEW_POST;
+          case 3: return LOGIN;
           default: return null;
         }
       }
@@ -354,6 +394,21 @@ public final class NetworkMessage {
        */
       com.google.protobuf.ByteString
           getHostAddressBytes();
+
+      // optional string password = 4;
+      /**
+       * <code>optional string password = 4;</code>
+       */
+      boolean hasPassword();
+      /**
+       * <code>optional string password = 4;</code>
+       */
+      java.lang.String getPassword();
+      /**
+       * <code>optional string password = 4;</code>
+       */
+      com.google.protobuf.ByteString
+          getPasswordBytes();
     }
     /**
      * Protobuf type {@code pubsub.message.Messages.Publisher}
@@ -419,6 +474,11 @@ public final class NetworkMessage {
               case 26: {
                 bitField0_ |= 0x00000004;
                 hostAddress_ = input.readBytes();
+                break;
+              }
+              case 34: {
+                bitField0_ |= 0x00000008;
+                password_ = input.readBytes();
                 break;
               }
             }
@@ -590,10 +650,54 @@ public final class NetworkMessage {
         }
       }
 
+      // optional string password = 4;
+      public static final int PASSWORD_FIELD_NUMBER = 4;
+      private java.lang.Object password_;
+      /**
+       * <code>optional string password = 4;</code>
+       */
+      public boolean hasPassword() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string password = 4;</code>
+       */
+      public java.lang.String getPassword() {
+        java.lang.Object ref = password_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            password_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>optional string password = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPasswordBytes() {
+        java.lang.Object ref = password_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          password_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
       private void initFields() {
         email_ = "";
         name_ = "";
         hostAddress_ = "";
+        password_ = "";
       }
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
@@ -620,6 +724,9 @@ public final class NetworkMessage {
         if (((bitField0_ & 0x00000004) == 0x00000004)) {
           output.writeBytes(3, getHostAddressBytes());
         }
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          output.writeBytes(4, getPasswordBytes());
+        }
         getUnknownFields().writeTo(output);
       }
 
@@ -640,6 +747,10 @@ public final class NetworkMessage {
         if (((bitField0_ & 0x00000004) == 0x00000004)) {
           size += com.google.protobuf.CodedOutputStream
             .computeBytesSize(3, getHostAddressBytes());
+        }
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBytesSize(4, getPasswordBytes());
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSerializedSize = size;
@@ -763,6 +874,8 @@ public final class NetworkMessage {
           bitField0_ = (bitField0_ & ~0x00000002);
           hostAddress_ = "";
           bitField0_ = (bitField0_ & ~0x00000004);
+          password_ = "";
+          bitField0_ = (bitField0_ & ~0x00000008);
           return this;
         }
 
@@ -803,6 +916,10 @@ public final class NetworkMessage {
             to_bitField0_ |= 0x00000004;
           }
           result.hostAddress_ = hostAddress_;
+          if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+            to_bitField0_ |= 0x00000008;
+          }
+          result.password_ = password_;
           result.bitField0_ = to_bitField0_;
           onBuilt();
           return result;
@@ -832,6 +949,11 @@ public final class NetworkMessage {
           if (other.hasHostAddress()) {
             bitField0_ |= 0x00000004;
             hostAddress_ = other.hostAddress_;
+            onChanged();
+          }
+          if (other.hasPassword()) {
+            bitField0_ |= 0x00000008;
+            password_ = other.password_;
             onChanged();
           }
           this.mergeUnknownFields(other.getUnknownFields());
@@ -1083,6 +1205,80 @@ public final class NetworkMessage {
   }
   bitField0_ |= 0x00000004;
           hostAddress_ = value;
+          onChanged();
+          return this;
+        }
+
+        // optional string password = 4;
+        private java.lang.Object password_ = "";
+        /**
+         * <code>optional string password = 4;</code>
+         */
+        public boolean hasPassword() {
+          return ((bitField0_ & 0x00000008) == 0x00000008);
+        }
+        /**
+         * <code>optional string password = 4;</code>
+         */
+        public java.lang.String getPassword() {
+          java.lang.Object ref = password_;
+          if (!(ref instanceof java.lang.String)) {
+            java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                .toStringUtf8();
+            password_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>optional string password = 4;</code>
+         */
+        public com.google.protobuf.ByteString
+            getPasswordBytes() {
+          java.lang.Object ref = password_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            password_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>optional string password = 4;</code>
+         */
+        public Builder setPassword(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+          password_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string password = 4;</code>
+         */
+        public Builder clearPassword() {
+          bitField0_ = (bitField0_ & ~0x00000008);
+          password_ = getDefaultInstance().getPassword();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string password = 4;</code>
+         */
+        public Builder setPasswordBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+          password_ = value;
           onChanged();
           return this;
         }
@@ -2036,12 +2232,43 @@ public final class NetworkMessage {
       return messageType_;
     }
 
+    // repeated string topics = 6;
+    public static final int TOPICS_FIELD_NUMBER = 6;
+    private com.google.protobuf.LazyStringList topics_;
+    /**
+     * <code>repeated string topics = 6;</code>
+     */
+    public java.util.List<java.lang.String>
+        getTopicsList() {
+      return topics_;
+    }
+    /**
+     * <code>repeated string topics = 6;</code>
+     */
+    public int getTopicsCount() {
+      return topics_.size();
+    }
+    /**
+     * <code>repeated string topics = 6;</code>
+     */
+    public java.lang.String getTopics(int index) {
+      return topics_.get(index);
+    }
+    /**
+     * <code>repeated string topics = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTopicsBytes(int index) {
+      return topics_.getByteString(index);
+    }
+
     private void initFields() {
       title_ = "";
       message_ = "";
       publisher_ = pubsub.message.NetworkMessage.Messages.Publisher.getDefaultInstance();
       subscriber_ = pubsub.message.NetworkMessage.Messages.Subscriber.getDefaultInstance();
       messageType_ = pubsub.message.NetworkMessage.Messages.MessageType.ADD_PUBLISHER;
+      topics_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2086,6 +2313,9 @@ public final class NetworkMessage {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeEnum(5, messageType_.getNumber());
       }
+      for (int i = 0; i < topics_.size(); i++) {
+        output.writeBytes(6, topics_.getByteString(i));
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2114,6 +2344,15 @@ public final class NetworkMessage {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(5, messageType_.getNumber());
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < topics_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeBytesSizeNoTag(topics_.getByteString(i));
+        }
+        size += dataSize;
+        size += 1 * getTopicsList().size();
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2251,6 +2490,8 @@ public final class NetworkMessage {
         bitField0_ = (bitField0_ & ~0x00000008);
         messageType_ = pubsub.message.NetworkMessage.Messages.MessageType.ADD_PUBLISHER;
         bitField0_ = (bitField0_ & ~0x00000010);
+        topics_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -2307,6 +2548,12 @@ public final class NetworkMessage {
           to_bitField0_ |= 0x00000010;
         }
         result.messageType_ = messageType_;
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          topics_ = new com.google.protobuf.UnmodifiableLazyStringList(
+              topics_);
+          bitField0_ = (bitField0_ & ~0x00000020);
+        }
+        result.topics_ = topics_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2341,6 +2588,16 @@ public final class NetworkMessage {
         }
         if (other.hasMessageType()) {
           setMessageType(other.getMessageType());
+        }
+        if (!other.topics_.isEmpty()) {
+          if (topics_.isEmpty()) {
+            topics_ = other.topics_;
+            bitField0_ = (bitField0_ & ~0x00000020);
+          } else {
+            ensureTopicsIsMutable();
+            topics_.addAll(other.topics_);
+          }
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2803,6 +3060,99 @@ public final class NetworkMessage {
         return this;
       }
 
+      // repeated string topics = 6;
+      private com.google.protobuf.LazyStringList topics_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureTopicsIsMutable() {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+          topics_ = new com.google.protobuf.LazyStringArrayList(topics_);
+          bitField0_ |= 0x00000020;
+         }
+      }
+      /**
+       * <code>repeated string topics = 6;</code>
+       */
+      public java.util.List<java.lang.String>
+          getTopicsList() {
+        return java.util.Collections.unmodifiableList(topics_);
+      }
+      /**
+       * <code>repeated string topics = 6;</code>
+       */
+      public int getTopicsCount() {
+        return topics_.size();
+      }
+      /**
+       * <code>repeated string topics = 6;</code>
+       */
+      public java.lang.String getTopics(int index) {
+        return topics_.get(index);
+      }
+      /**
+       * <code>repeated string topics = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTopicsBytes(int index) {
+        return topics_.getByteString(index);
+      }
+      /**
+       * <code>repeated string topics = 6;</code>
+       */
+      public Builder setTopics(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureTopicsIsMutable();
+        topics_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string topics = 6;</code>
+       */
+      public Builder addTopics(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureTopicsIsMutable();
+        topics_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string topics = 6;</code>
+       */
+      public Builder addAllTopics(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureTopicsIsMutable();
+        super.addAll(values, topics_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string topics = 6;</code>
+       */
+      public Builder clearTopics() {
+        topics_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string topics = 6;</code>
+       */
+      public Builder addTopicsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureTopicsIsMutable();
+        topics_.add(value);
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:pubsub.message.Messages)
     }
 
@@ -2838,19 +3188,20 @@ public final class NetworkMessage {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024NetworkMessage.proto\022\016pubsub.message\"\230" +
+      "\n\024NetworkMessage.proto\022\016pubsub.message\"\305" +
       "\003\n\010Messages\022\r\n\005title\030\001 \001(\t\022\017\n\007message\030\002 " +
       "\001(\t\0225\n\tpublisher\030\003 \001(\0132\".pubsub.message." +
       "Messages.Publisher\0227\n\nsubscriber\030\004 \001(\0132#" +
       ".pubsub.message.Messages.Subscriber\0229\n\013m" +
       "essageType\030\005 \002(\0162$.pubsub.message.Messag" +
-      "es.MessageType\032=\n\tPublisher\022\r\n\005email\030\001 \002" +
-      "(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013hostAddress\030\003 \001(\t\032>\n" +
-      "\nSubscriber\022\r\n\005email\030\001 \002(\t\022\014\n\004name\030\002 \001(\t" +
-      "\022\023\n\013hostAddress\030\003 \001(\t\"B\n\013MessageType\022\021\n\r",
-      "ADD_PUBLISHER\020\000\022\022\n\016ADD_SUBSCRIBER\020\001\022\014\n\010N" +
-      "EW_POST\020\002B \n\016pubsub.messageB\016NetworkMess" +
-      "age"
+      "es.MessageType\022\016\n\006topics\030\006 \003(\t\032O\n\tPublis" +
+      "her\022\r\n\005email\030\001 \002(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013host" +
+      "Address\030\003 \001(\t\022\020\n\010password\030\004 \001(\t\032>\n\nSubsc" +
+      "riber\022\r\n\005email\030\001 \002(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013ho",
+      "stAddress\030\003 \001(\t\"M\n\013MessageType\022\021\n\rADD_PU" +
+      "BLISHER\020\000\022\022\n\016ADD_SUBSCRIBER\020\001\022\014\n\010NEW_POS" +
+      "T\020\002\022\t\n\005LOGIN\020\003B \n\016pubsub.messageB\016Networ" +
+      "kMessage"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2862,13 +3213,13 @@ public final class NetworkMessage {
           internal_static_pubsub_message_Messages_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pubsub_message_Messages_descriptor,
-              new java.lang.String[] { "Title", "Message", "Publisher", "Subscriber", "MessageType", });
+              new java.lang.String[] { "Title", "Message", "Publisher", "Subscriber", "MessageType", "Topics", });
           internal_static_pubsub_message_Messages_Publisher_descriptor =
             internal_static_pubsub_message_Messages_descriptor.getNestedTypes().get(0);
           internal_static_pubsub_message_Messages_Publisher_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pubsub_message_Messages_Publisher_descriptor,
-              new java.lang.String[] { "Email", "Name", "HostAddress", });
+              new java.lang.String[] { "Email", "Name", "HostAddress", "Password", });
           internal_static_pubsub_message_Messages_Subscriber_descriptor =
             internal_static_pubsub_message_Messages_descriptor.getNestedTypes().get(1);
           internal_static_pubsub_message_Messages_Subscriber_fieldAccessorTable = new
