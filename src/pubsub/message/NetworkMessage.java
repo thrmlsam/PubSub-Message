@@ -268,6 +268,10 @@ public final class NetworkMessage {
        * <code>LOGIN = 3;</code>
        */
       LOGIN(3, 3),
+      /**
+       * <code>ADD_TOPIC = 4;</code>
+       */
+      ADD_TOPIC(4, 4),
       ;
 
       /**
@@ -286,6 +290,10 @@ public final class NetworkMessage {
        * <code>LOGIN = 3;</code>
        */
       public static final int LOGIN_VALUE = 3;
+      /**
+       * <code>ADD_TOPIC = 4;</code>
+       */
+      public static final int ADD_TOPIC_VALUE = 4;
 
 
       public final int getNumber() { return value; }
@@ -296,6 +304,7 @@ public final class NetworkMessage {
           case 1: return ADD_SUBSCRIBER;
           case 2: return NEW_POST;
           case 3: return LOGIN;
+          case 4: return ADD_TOPIC;
           default: return null;
         }
       }
@@ -3188,7 +3197,7 @@ public final class NetworkMessage {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024NetworkMessage.proto\022\016pubsub.message\"\305" +
+      "\n\024NetworkMessage.proto\022\016pubsub.message\"\324" +
       "\003\n\010Messages\022\r\n\005title\030\001 \001(\t\022\017\n\007message\030\002 " +
       "\001(\t\0225\n\tpublisher\030\003 \001(\0132\".pubsub.message." +
       "Messages.Publisher\0227\n\nsubscriber\030\004 \001(\0132#" +
@@ -3198,10 +3207,10 @@ public final class NetworkMessage {
       "her\022\r\n\005email\030\001 \002(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013host" +
       "Address\030\003 \001(\t\022\020\n\010password\030\004 \001(\t\032>\n\nSubsc" +
       "riber\022\r\n\005email\030\001 \002(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013ho",
-      "stAddress\030\003 \001(\t\"M\n\013MessageType\022\021\n\rADD_PU" +
+      "stAddress\030\003 \001(\t\"\\\n\013MessageType\022\021\n\rADD_PU" +
       "BLISHER\020\000\022\022\n\016ADD_SUBSCRIBER\020\001\022\014\n\010NEW_POS" +
-      "T\020\002\022\t\n\005LOGIN\020\003B \n\016pubsub.messageB\016Networ" +
-      "kMessage"
+      "T\020\002\022\t\n\005LOGIN\020\003\022\r\n\tADD_TOPIC\020\004B \n\016pubsub." +
+      "messageB\016NetworkMessage"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

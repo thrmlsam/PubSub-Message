@@ -15,6 +15,7 @@ message Messages {
                 ADD_SUBSCRIBER = 1;
                 NEW_POST = 2;
                 LOGIN = 3;
+                ADD_TOPIC = 4;
         }
 
         message Publisher{
