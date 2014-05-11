@@ -16,6 +16,8 @@ message Messages {
                 NEW_POST = 2;
                 LOGIN = 3;
                 ADD_TOPIC = 4;
+                GET_TOPICS = 5;
+                GET_SUBSCRIBEDTOPICS = 6;
         }
 
         message Publisher{
