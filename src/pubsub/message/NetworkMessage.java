@@ -280,6 +280,10 @@ public final class NetworkMessage {
        * <code>GET_SUBSCRIBEDTOPICS = 6;</code>
        */
       GET_SUBSCRIBEDTOPICS(6, 6),
+      /**
+       * <code>REMOVE_SUBSCRIBER = 7;</code>
+       */
+      REMOVE_SUBSCRIBER(7, 7),
       ;
 
       /**
@@ -310,6 +314,10 @@ public final class NetworkMessage {
        * <code>GET_SUBSCRIBEDTOPICS = 6;</code>
        */
       public static final int GET_SUBSCRIBEDTOPICS_VALUE = 6;
+      /**
+       * <code>REMOVE_SUBSCRIBER = 7;</code>
+       */
+      public static final int REMOVE_SUBSCRIBER_VALUE = 7;
 
 
       public final int getNumber() { return value; }
@@ -323,6 +331,7 @@ public final class NetworkMessage {
           case 4: return ADD_TOPIC;
           case 5: return GET_TOPICS;
           case 6: return GET_SUBSCRIBEDTOPICS;
+          case 7: return REMOVE_SUBSCRIBER;
           default: return null;
         }
       }
@@ -1324,17 +1333,17 @@ public final class NetworkMessage {
     public interface SubscriberOrBuilder
         extends com.google.protobuf.MessageOrBuilder {
 
-      // required string email = 1;
+      // optional string email = 1;
       /**
-       * <code>required string email = 1;</code>
+       * <code>optional string email = 1;</code>
        */
       boolean hasEmail();
       /**
-       * <code>required string email = 1;</code>
+       * <code>optional string email = 1;</code>
        */
       java.lang.String getEmail();
       /**
-       * <code>required string email = 1;</code>
+       * <code>optional string email = 1;</code>
        */
       com.google.protobuf.ByteString
           getEmailBytes();
@@ -1475,17 +1484,17 @@ public final class NetworkMessage {
       }
 
       private int bitField0_;
-      // required string email = 1;
+      // optional string email = 1;
       public static final int EMAIL_FIELD_NUMBER = 1;
       private java.lang.Object email_;
       /**
-       * <code>required string email = 1;</code>
+       * <code>optional string email = 1;</code>
        */
       public boolean hasEmail() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string email = 1;</code>
+       * <code>optional string email = 1;</code>
        */
       public java.lang.String getEmail() {
         java.lang.Object ref = email_;
@@ -1502,7 +1511,7 @@ public final class NetworkMessage {
         }
       }
       /**
-       * <code>required string email = 1;</code>
+       * <code>optional string email = 1;</code>
        */
       public com.google.protobuf.ByteString
           getEmailBytes() {
@@ -1614,10 +1623,6 @@ public final class NetworkMessage {
         byte isInitialized = memoizedIsInitialized;
         if (isInitialized != -1) return isInitialized == 1;
 
-        if (!hasEmail()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
         memoizedIsInitialized = 1;
         return true;
       }
@@ -1853,10 +1858,6 @@ public final class NetworkMessage {
         }
 
         public final boolean isInitialized() {
-          if (!hasEmail()) {
-            
-            return false;
-          }
           return true;
         }
 
@@ -1879,16 +1880,16 @@ public final class NetworkMessage {
         }
         private int bitField0_;
 
-        // required string email = 1;
+        // optional string email = 1;
         private java.lang.Object email_ = "";
         /**
-         * <code>required string email = 1;</code>
+         * <code>optional string email = 1;</code>
          */
         public boolean hasEmail() {
           return ((bitField0_ & 0x00000001) == 0x00000001);
         }
         /**
-         * <code>required string email = 1;</code>
+         * <code>optional string email = 1;</code>
          */
         public java.lang.String getEmail() {
           java.lang.Object ref = email_;
@@ -1902,7 +1903,7 @@ public final class NetworkMessage {
           }
         }
         /**
-         * <code>required string email = 1;</code>
+         * <code>optional string email = 1;</code>
          */
         public com.google.protobuf.ByteString
             getEmailBytes() {
@@ -1918,7 +1919,7 @@ public final class NetworkMessage {
           }
         }
         /**
-         * <code>required string email = 1;</code>
+         * <code>optional string email = 1;</code>
          */
         public Builder setEmail(
             java.lang.String value) {
@@ -1931,7 +1932,7 @@ public final class NetworkMessage {
           return this;
         }
         /**
-         * <code>required string email = 1;</code>
+         * <code>optional string email = 1;</code>
          */
         public Builder clearEmail() {
           bitField0_ = (bitField0_ & ~0x00000001);
@@ -1940,7 +1941,7 @@ public final class NetworkMessage {
           return this;
         }
         /**
-         * <code>required string email = 1;</code>
+         * <code>optional string email = 1;</code>
          */
         public Builder setEmailBytes(
             com.google.protobuf.ByteString value) {
@@ -2312,12 +2313,6 @@ public final class NetworkMessage {
           return false;
         }
       }
-      if (hasSubscriber()) {
-        if (!getSubscriber().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -2637,12 +2632,6 @@ public final class NetworkMessage {
         }
         if (hasPublisher()) {
           if (!getPublisher().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasSubscriber()) {
-          if (!getSubscriber().isInitialized()) {
             
             return false;
           }
@@ -3215,8 +3204,8 @@ public final class NetworkMessage {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024NetworkMessage.proto\022\016pubsub.message\"\377" +
-      "\003\n\010Messages\022\r\n\005title\030\001 \001(\t\022\017\n\007message\030\002 " +
+      "\n\024NetworkMessage.proto\022\016pubsub.message\"\226" +
+      "\004\n\010Messages\022\r\n\005title\030\001 \001(\t\022\017\n\007message\030\002 " +
       "\001(\t\0225\n\tpublisher\030\003 \001(\0132\".pubsub.message." +
       "Messages.Publisher\0227\n\nsubscriber\030\004 \001(\0132#" +
       ".pubsub.message.Messages.Subscriber\0229\n\013m" +
@@ -3224,12 +3213,13 @@ public final class NetworkMessage {
       "es.MessageType\022\016\n\006topics\030\006 \003(\t\032O\n\tPublis" +
       "her\022\r\n\005email\030\001 \002(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013host" +
       "Address\030\003 \001(\t\022\020\n\010password\030\004 \001(\t\032>\n\nSubsc" +
-      "riber\022\r\n\005email\030\001 \002(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013ho",
-      "stAddress\030\003 \001(\t\"\206\001\n\013MessageType\022\021\n\rADD_P" +
+      "riber\022\r\n\005email\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013ho",
+      "stAddress\030\003 \001(\t\"\235\001\n\013MessageType\022\021\n\rADD_P" +
       "UBLISHER\020\000\022\022\n\016ADD_SUBSCRIBER\020\001\022\014\n\010NEW_PO" +
       "ST\020\002\022\t\n\005LOGIN\020\003\022\r\n\tADD_TOPIC\020\004\022\016\n\nGET_TO" +
-      "PICS\020\005\022\030\n\024GET_SUBSCRIBEDTOPICS\020\006B \n\016pubs" +
-      "ub.messageB\016NetworkMessage"
+      "PICS\020\005\022\030\n\024GET_SUBSCRIBEDTOPICS\020\006\022\025\n\021REMO" +
+      "VE_SUBSCRIBER\020\007B \n\016pubsub.messageB\016Netwo" +
+      "rkMessage"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
